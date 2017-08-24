@@ -36,7 +36,6 @@ namespace AspNetNgStarter
 
     public static class UnityContainerExtension
     {
-
         public static IUnityContainer AddMediator<T>(this IUnityContainer container)
         {
             var classes = AllClasses.FromAssemblies(typeof(T).Assembly)
@@ -45,25 +44,9 @@ namespace AspNetNgStarter
                 && x.Name.EndsWith("Hub") == false
                 && x.Name.EndsWith("Message") == false
                 && x.Name.EndsWith("Cache") == false
+                && x.Name.EndsWith("EventBusMessageHandler") == false
                 && x.FullName.Contains("Model") == false)
                 .ToList();
-
-            return container.RegisterClassesTypesAndInstances(classes);
-        }
-
-        public static IUnityContainer AddMediator<T1, T2>(this IUnityContainer container)
-        {
-            var classes = AllClasses.FromAssemblies(typeof(T1).Assembly)
-                .Where(x => x.Name.Contains("Controller") == false
-                && x.Name.Contains("Attribute") == false
-                && x.Name.EndsWith("Message") == false
-                && x.FullName.Contains("Data.Model") == false)
-                .ToList();
-
-            classes.AddRange(AllClasses.FromAssemblies(typeof(T2).Assembly)
-                .Where(x => x.Name.Contains("Controller") == false 
-                && x.FullName.Contains("Data.Model") == false)
-                .ToList());
 
             return container.RegisterClassesTypesAndInstances(classes);
         }
