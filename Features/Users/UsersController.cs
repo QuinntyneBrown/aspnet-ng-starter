@@ -22,20 +22,21 @@ namespace AspNetNgStarter.Features.Users
         [HttpPost]
         public async Task<HttpResponseMessage> GetToken([FromBody]JObject request)
         {
-            var formData = new List<KeyValuePair<string, string>>();
-
-            formData.Add(new KeyValuePair<string, string>("grant_type", $"{request["grant_type"]}"));
-            formData.Add(new KeyValuePair<string, string>("username", $"{request["username"]}"));
-            formData.Add(new KeyValuePair<string, string>("password", $"{request["password"]}"));
+            var formData = new List<KeyValuePair<string, string>>()
+            {
+                new KeyValuePair<string, string>("grant_type", $"{request["grant_type"]}"),
+                new KeyValuePair<string, string>("username", $"{request["username"]}"),
+                new KeyValuePair<string, string>("password", $"{request["password"]}")
+            };
 
             var httpRequestMessage = new HttpRequestMessage()
             {
-                RequestUri = new Uri("http://identity.quinntynebrown.com/api/users/token"),
+                RequestUri = new Uri(TokenEndpoint),
                 Method = HttpMethod.Post,
-                Content = new FormUrlEncodedContent(formData)
+                Content = new FormUrlEncodedContent(formData)                
             };
             
-            httpRequestMessage.Headers.Add("Tenant", Request.Headers.GetValues("Tenant").ToList()[0]);
+            httpRequestMessage.Headers.Add("Tenant",TenantId);
 
             return await _httpClient.SendAsync(httpRequestMessage);
         }
@@ -53,6 +54,10 @@ namespace AspNetNgStarter.Features.Users
                 Username = User.Identity.Name
             });
         }
+
+        public string TenantId {  get { return Request.Headers.GetValues("Tenant").ToList()[0]; } }
+
+        public string TokenEndpoint {  get { return "http://identity.quinntynebrown.com/api/users/token"; } }
 
         private HttpClient _httpClient;
     }

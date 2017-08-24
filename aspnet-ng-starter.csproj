@@ -255,6 +255,9 @@
       <DependentUpon>app.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\app.component.html" />
+    <Content Include="ClientApp\app\home\home-page.component.css">
+      <DependentUpon>home-page.component.html</DependentUpon>
+    </Content>
     <Content Include="ClientApp\app\shared\components\header.component.css">
       <DependentUpon>header.component.html</DependentUpon>
     </Content>
@@ -306,6 +309,7 @@
     <Content Include="ClientApp\app\shared\components\tab-content.component.html" />
     <Content Include="ClientApp\app\shared\components\tab-title.component.html" />
     <Content Include="ClientApp\app\shared\components\left-nav.component.html" />
+    <Content Include="ClientApp\app\home\home-page.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
@@ -374,6 +378,9 @@
     <TypeScriptCompile Include="ClientApp\app\app.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\app.routing.ts" />
     <TypeScriptCompile Include="ClientApp\app\environment.ts" />
+    <TypeScriptCompile Include="ClientApp\app\home\home-page.component.ts">
+      <DependentUpon>home-page.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\index.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\components\header.component.ts">
       <DependentUpon>header.component.html</DependentUpon>
@@ -435,6 +442,7 @@
     <TypeScriptCompile Include="ClientApp\polyfills.ts" />
     <TypeScriptCompile Include="ClientApp\app\users\users.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\guards\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\home\home.module.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

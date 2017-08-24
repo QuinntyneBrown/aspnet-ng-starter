@@ -5,20 +5,17 @@ import {RouterModule} from '@angular/router';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 
+import {HomeModule} from "../app/home/home.module";
 import {SharedModule} from "../app/shared";
 import {UsersModule} from "../app/users/users.module";
 import {TenantsModule} from "../app/tenants/tenants.module";
 
 import {AppComponent} from './app.component';
 
-import {
-    RoutingModule,
-    routedComponents
-} from "./app.routing";
+import { RoutingModule } from "./app.routing";
 
 const declarables = [
-    AppComponent,
-    routedComponents
+    AppComponent
 ];
 
 const providers = [];
@@ -32,6 +29,7 @@ const providers = [];
         FormsModule,
         RouterModule,
 
+        HomeModule,
         SharedModule,
         TenantsModule,
         UsersModule

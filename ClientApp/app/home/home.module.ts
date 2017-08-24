@@ -3,18 +3,21 @@ import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SharedModule } from "../shared/shared.module";
 import { TenantGuardService } from "../shared/guards/tenant-guard.service";
-import { LoginComponent } from './login.component';
-import { LoginPageComponent } from "./login-page.component";
+import { AuthGuardService } from "../shared/guards/auth-guard.service";
+import { EventHubConnectionGuardService } from "../shared/guards/event-hub-connection-guard.service";
+import { HomePageComponent } from "./home-page.component";
 
-const declarables = [LoginComponent, LoginPageComponent];
+const declarables = [HomePageComponent];
 const providers = [];
 
-export const USER_ROUTES = [
+export const HOME_ROUTES = [
     {
-        path: 'login',
-        component: LoginPageComponent,
+        path: '',
+        component: HomePageComponent,
         canActivate: [
-            TenantGuardService
+            TenantGuardService,
+            AuthGuardService,
+            EventHubConnectionGuardService
         ]
     }
 ];
@@ -25,4 +28,4 @@ export const USER_ROUTES = [
     declarations: [declarables],
     providers: providers
 })
-export class UsersModule { }
+export class HomeModule { }

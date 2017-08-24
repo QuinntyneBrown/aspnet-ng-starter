@@ -27,29 +27,29 @@ namespace AspNetNgStarter
                 ApiConfiguration.Install(config, app);
 
                 
-                var client = SubscriptionClient.CreateFromConnectionString(CoreConfiguration.Config.EventQueueConnectionString, CoreConfiguration.Config.TopicName, CoreConfiguration.Config.SubscriptionName);
+                //var client = SubscriptionClient.CreateFromConnectionString(CoreConfiguration.Config.EventQueueConnectionString, CoreConfiguration.Config.TopicName, CoreConfiguration.Config.SubscriptionName);
 
-                client.OnMessage(message =>
-                {
-                    try
-                    {
-                        var messageBody = ((BrokeredMessage)message).GetBody<string>();
-                        var messageBodyObject = DeserializeObject<JObject>(messageBody, new JsonSerializerSettings
-                        {
-                            ReferenceLoopHandling = ReferenceLoopHandling.Serialize,
-                            PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-                            TypeNameHandling = TypeNameHandling.All,
-                            ContractResolver= new CamelCasePropertyNamesContractResolver()                            
-                        });
+                //client.OnMessage(message =>
+                //{
+                //    try
+                //    {
+                //        var messageBody = ((BrokeredMessage)message).GetBody<string>();
+                //        var messageBodyObject = DeserializeObject<JObject>(messageBody, new JsonSerializerSettings
+                //        {
+                //            ReferenceLoopHandling = ReferenceLoopHandling.Serialize,
+                //            PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+                //            TypeNameHandling = TypeNameHandling.All,
+                //            ContractResolver= new CamelCasePropertyNamesContractResolver()                            
+                //        });
 
-                        // Add Handlers
+                //        // Add Handlers
 
-                    }
-                    catch (Exception e)
-                    {
+                //    }
+                //    catch (Exception e)
+                //    {
 
-                    }
-                });
+                //    }
+                //});
             });
         }
     }

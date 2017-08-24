@@ -3,30 +3,12 @@ import {LoginPageComponent} from "./users/login-page.component";
 import {SetTenantPageComponent} from "./tenants/set-tenant-page.component";
 import {TenantGuardService} from "./shared/guards/tenant-guard.service";
 
-export const routes: Routes = [
-    {
-        path: '',
-        redirectTo: 'contacts',
-        pathMatch:'full'
-    },    
-    {
-        path: 'tenants/set',
-        component: SetTenantPageComponent
-    },
-    {
-        path: 'login',
-        component: LoginPageComponent,
-        canActivate: [
-            TenantGuardService
-        ]
-    }
-];
+import { HOME_ROUTES } from "./home/home.module";
+import { TENANT_ROUTES } from "./tenants/tenants.module";
+import { USER_ROUTES } from "./users/users.module";
 
 export const RoutingModule = RouterModule.forRoot([
-    ...routes
+    ...HOME_ROUTES,
+    ...TENANT_ROUTES,
+    ...USER_ROUTES
 ]);
-
-export const routedComponents = [
-    LoginPageComponent,
-    SetTenantPageComponent
-];
