@@ -7,10 +7,13 @@ import { TenantGuardService } from "../shared/guards/tenant-guard.service";
 import { LoginComponent } from './login.component';
 import { LoginPageComponent } from "./login-page.component";
 import { CurrentUserGuardService } from "./current-user-guard.service";
+import { UsersService } from "./users.service";
 
 const declarables = [LoginComponent, LoginPageComponent];
+
 const providers = [
-    CurrentUserGuardService
+    CurrentUserGuardService,
+UsersService
 ];
 
 export const USER_ROUTES = [

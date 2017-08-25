@@ -5,11 +5,9 @@ import { HttpClient } from "@angular/common/http";
 export class UsersService {
     constructor(
         private _httpClient: HttpClient
-    ) {
-
-    }
+    ) { }
 
     public getCurrent() {
-        return this._httpClient.get<{user:any}>("/users/current");
+        return this._httpClient.get<{user:any}>("/api/users/current");
     }
 }
