@@ -5,12 +5,12 @@ using Unity.WebApi;
 using Microsoft.Practices.Unity;
 using AspNetNgStarter.Features.Core;
 using Microsoft.ServiceBus.Messaging;
-
 using static Newtonsoft.Json.JsonConvert;
 using Newtonsoft.Json.Linq;
 using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Microsoft.AspNet.SignalR;
 
 [assembly: OwinStartup(typeof(AspNetNgStarter.Startup))]
 
@@ -26,7 +26,7 @@ namespace AspNetNgStarter
                 config.DependencyResolver = new UnityDependencyResolver(container);
                 ApiConfiguration.Install(config, app);
 
-                
+
                 //var client = SubscriptionClient.CreateFromConnectionString(CoreConfiguration.Config.EventQueueConnectionString, CoreConfiguration.Config.TopicName, CoreConfiguration.Config.SubscriptionName);
 
                 //client.OnMessage(message =>
@@ -42,8 +42,9 @@ namespace AspNetNgStarter
                 //            ContractResolver= new CamelCasePropertyNamesContractResolver()                            
                 //        });
 
-                //        // Add Handlers
+                //        Add Handlers Here
 
+                //        GlobalHost.ConnectionManager.GetHubContext<EventHub>().Clients.All.events(messageBodyObject);
                 //    }
                 //    catch (Exception e)
                 //    {
