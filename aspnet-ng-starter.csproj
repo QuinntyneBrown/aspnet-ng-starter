@@ -431,6 +431,7 @@
       <DependentUpon>set-tenant-page.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\tenants\tenants.module.ts" />
+    <TypeScriptCompile Include="ClientApp\app\users\current-user-guard.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\users\index.ts" />
     <TypeScriptCompile Include="ClientApp\app\users\login-page.component.ts">
       <DependentUpon>login-page.component.html</DependentUpon>
@@ -438,6 +439,7 @@
     <TypeScriptCompile Include="ClientApp\app\users\login.component.ts">
       <DependentUpon>login.component.html</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\users\users.service.ts" />
     <TypeScriptCompile Include="ClientApp\main.ts" />
     <TypeScriptCompile Include="ClientApp\polyfills.ts" />
     <TypeScriptCompile Include="ClientApp\app\users\users.module.ts" />

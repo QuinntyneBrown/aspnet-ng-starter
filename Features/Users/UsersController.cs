@@ -45,13 +45,16 @@ namespace AspNetNgStarter.Features.Users
         [Route("current")]
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IHttpActionResult> Current()
+        public IHttpActionResult Current()
         {            
             if (!User.Identity.IsAuthenticated)
                 return Ok();
             
             return Ok(new {
-                Username = User.Identity.Name
+                User = new
+                {
+                    Username = User.Identity.Name
+                }
             });
         }
 

@@ -1,5 +1,6 @@
 ﻿export const constants = {
-    HUB_URL:"",
+    HUB_URL: "",
+    CURRENT_USER_KEY: "CURRENT_USER_KEY",
     STORAGE_KEY: "[AspNetNgStarter] STORAGE_KEY",
     ACCESS_TOKEN_KEY: "ACCESS_TOKEN_KEY",
     LOGIN_CREDENTIALS: "LOGIN_CREDENTIALS",
