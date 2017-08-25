@@ -6,7 +6,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-
 namespace AspNetNgStarter.Features.Users
 {
     [Authorize]
@@ -58,7 +57,7 @@ namespace AspNetNgStarter.Features.Users
             });
         }
 
-        public string TenantId {  get { return Request.Headers.GetValues("Tenant").ToList()[0]; } }
+        public string TenantId {  get { return Request.Headers.GetValues("Tenant").Single(); } }
 
         public string TokenEndpoint {  get { return "http://identity.quinntynebrown.com/api/users/token"; } }
 

@@ -327,6 +327,8 @@
     <Compile Include="Data\Helpers\SoftDeleteQueryVisitor.cs" />
     <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Data\Migrations\TenantConfiguration.cs" />
+    <Compile Include="Features\Core\BaseAuthenticatedRequest.cs" />
+    <Compile Include="Features\Core\ClaimTypes.cs" />
     <Compile Include="Model\ILoggable.cs" />
     <Compile Include="Model\Tenant.cs" />
     <Compile Include="Features\Core\BaseApiController.cs" />

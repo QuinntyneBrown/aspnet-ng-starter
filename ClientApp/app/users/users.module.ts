@@ -9,11 +9,14 @@ import { LoginPageComponent } from "./login-page.component";
 import { CurrentUserGuardService } from "./current-user-guard.service";
 import { UsersService } from "./users.service";
 
-const declarables = [LoginComponent, LoginPageComponent];
+const declarables = [
+    LoginComponent,
+    LoginPageComponent
+];
 
 const providers = [
     CurrentUserGuardService,
-UsersService
+    UsersService
 ];
 
 export const USER_ROUTES = [
