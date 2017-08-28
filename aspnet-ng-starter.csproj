@@ -419,12 +419,18 @@
     <TypeScriptCompile Include="ClientApp\app\shared\services\index.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\login-redirect.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\event-hub.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\services\popover.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\services\position.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\services\rectangle.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\services\ruler.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\services\space.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\storage.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\shared.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\utilities\add-or-update.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\utilities\guid.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\utilities\pluck-out.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\utilities\pluck.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\utilities\translate-xy.ts" />
     <TypeScriptCompile Include="ClientApp\app\tenants\index.ts" />
     <TypeScriptCompile Include="ClientApp\app\tenants\set-tenant-form.component.ts">
       <DependentUpon>set-tenant-form.component.html</DependentUpon>
