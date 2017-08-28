@@ -258,6 +258,9 @@
     <Content Include="ClientApp\app\home\home-page.component.css">
       <DependentUpon>home-page.component.html</DependentUpon>
     </Content>
+    <Content Include="ClientApp\app\home\home-popover.component.css">
+      <DependentUpon>home-popover.component.html</DependentUpon>
+    </Content>
     <Content Include="ClientApp\app\shared\components\backdrop.component.css">
       <DependentUpon>backdrop.component.html</DependentUpon>
     </Content>
@@ -318,6 +321,7 @@
     <Content Include="ClientApp\app\shared\components\tab-title.component.html" />
     <Content Include="ClientApp\app\shared\components\left-nav.component.html" />
     <Content Include="ClientApp\app\home\home-page.component.html" />
+    <Content Include="ClientApp\app\home\home-popover.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
@@ -390,6 +394,9 @@
     <TypeScriptCompile Include="ClientApp\app\environment.ts" />
     <TypeScriptCompile Include="ClientApp\app\home\home-page.component.ts">
       <DependentUpon>home-page.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\home\home-popover.component.ts">
+      <DependentUpon>home-popover.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\index.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\components\backdrop.component.ts">

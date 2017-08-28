@@ -1,5 +1,6 @@
 ﻿import { Injectable, ApplicationRef, ComponentFactoryResolver, ComponentFactory, Injector, ComponentRef } from "@angular/core";
-
+import { Position } from "./position";
+import { translateXY } from "../utilities/translate-xy";
 export interface IPopoverService {
 
 }
@@ -10,19 +11,28 @@ export class PopoverService implements IPopoverService {
     constructor(
         private _applicationRef: ApplicationRef,
         private _componentFactoryResolver: ComponentFactoryResolver,
-        private _injector: Injector
+        private _injector: Injector,
+        private _position: Position
     ) { }
 
     private _componentFactory: ComponentFactory<any>;
     private _componentRef: ComponentRef<any>;
 
-    public show(options: { component: any }): Promise<any> {
+    public async show(options: { component: any, target: HTMLElement }): Promise<any> {
         const containerElement = document.querySelector('body');
         this._componentFactory = this._componentFactoryResolver.resolveComponentFactory(options.component);
+        this._componentRef = this._componentFactory.create(this._injector);
+        this.setInitialCss();
 
-        return new Promise((resolve) => {
-
+        await this._position.bottom({
+            componentRef: this._componentRef,
+            target: options.target,
+            space: 0
         });
+        
+        this._applicationRef.attachView(this._componentRef.hostView);
+        containerElement.appendChild(this.nativeElement);
+        setTimeout(() => { this.nativeElement.style.opacity = "100"; }, 100);        
     }
 
     public hide(): Promise<any> {
@@ -32,7 +42,7 @@ export class PopoverService implements IPopoverService {
         });
     }
 
-    private setInitialCss = () => {
+    private setInitialCss() {
         this.nativeElement.setAttribute("style", `-webkit-transition: opacity ${this.transitionDurationInMilliseconds}ms ease-in-out;-o-transition: opacity ${this.transitionDurationInMilliseconds}ms ease-in-out;transition: opacity ${this.transitionDurationInMilliseconds}ms ease-in-out;`);
         this.nativeElement.style.opacity = "0";
         this.nativeElement.style.position = "fixed";
@@ -43,7 +53,9 @@ export class PopoverService implements IPopoverService {
 
     public transitionDurationInMilliseconds: number;
 
-    public nativeElement: HTMLElement;
+    public get nativeElement(): HTMLElement {
+        return this._componentRef.location.nativeElement;
+    }
 
     public templateHTML: string;
 }

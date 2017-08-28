@@ -1,4 +1,4 @@
-﻿import { Injectable, ApplicationRef, ComponentFactoryResolver } from "@angular/core";
+﻿import { Injectable, ApplicationRef, ComponentFactoryResolver, ComponentRef } from "@angular/core";
 import { Rectangle } from "./rectangle";
 
 export interface IRuler {
@@ -7,9 +7,7 @@ export interface IRuler {
 
 @Injectable()
 export class Ruler implements IRuler {
-    constructor(
-        private _applicationRef: ApplicationRef,
-        private _componentFactoryResolver: ComponentFactoryResolver) {
+    constructor(private _applicationRef: ApplicationRef) {
 
         this.measure = this.measure.bind(this);
     }
@@ -29,5 +27,19 @@ export class Ruler implements IRuler {
                 }, 0);
             }
         });        
+    }
+
+    public measureComponent(options: { componentRef: ComponentRef<any> }): Promise<Rectangle> {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                this._applicationRef.attachView(options.componentRef.hostView);    
+                document.body.appendChild(options.componentRef.location.nativeElement);
+                const clientRect = options.componentRef.location.nativeElement.getBoundingClientRect();
+                options.componentRef.location.nativeElement.parentNode.removeChild(options.componentRef.location.nativeElement);
+                this._applicationRef.detachView(options.componentRef.hostView);                
+                var result = Rectangle.fromClientRect(clientRect);                
+                resolve(result);
+            }, 0);
+        });
     }
 }

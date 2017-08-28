@@ -70,7 +70,9 @@ const declarables = [
     PagerComponent,
     TabContentComponent,
     TabTitleComponent,
-    TabsComponent
+    TabsComponent,
+    ModalWindowComponent,
+    BackdropComponent
 ];
 
 @NgModule({
