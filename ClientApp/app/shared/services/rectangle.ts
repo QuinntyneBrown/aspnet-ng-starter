@@ -1,4 +1,8 @@
-﻿export class Rectangle {
+﻿export interface IPoint {
+
+}
+
+export class Rectangle {
     constructor() { }
 
     public static fromClientRect(clientRect: ClientRect): Rectangle {

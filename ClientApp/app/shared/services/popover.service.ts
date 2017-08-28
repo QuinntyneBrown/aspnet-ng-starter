@@ -1,10 +1,25 @@
-﻿import { Injectable } from "@angular/core";
+﻿import { Injectable, ApplicationRef, ComponentFactoryResolver, ComponentFactory, Injector, ComponentRef } from "@angular/core";
+
+export interface IPopoverService {
+
+}
+
 
 @Injectable()
-export class PopoverService {
-    constructor() { }
+export class PopoverService implements IPopoverService {
+    constructor(
+        private _applicationRef: ApplicationRef,
+        private _componentFactoryResolver: ComponentFactoryResolver,
+        private _injector: Injector
+    ) { }
 
-    public show(options: {templateHTML:string}): Promise<any> {
+    private _componentFactory: ComponentFactory<any>;
+    private _componentRef: ComponentRef<any>;
+
+    public show(options: { component: any }): Promise<any> {
+        const containerElement = document.querySelector('body');
+        this._componentFactory = this._componentFactoryResolver.resolveComponentFactory(options.component);
+
         return new Promise((resolve) => {
 
         });
@@ -12,7 +27,8 @@ export class PopoverService {
 
     public hide(): Promise<any> {
         return new Promise((resolve) => {
-
+            this._applicationRef.detachView(this._componentRef.hostView);
+            this._componentRef.destroy();
         });
     }
 

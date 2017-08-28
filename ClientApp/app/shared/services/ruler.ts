@@ -5,6 +5,7 @@ export interface IRuler {
     measure(element: HTMLElement): Promise<Rectangle>
 }
 
+@Injectable()
 export class Ruler implements IRuler {
     constructor(
         private _applicationRef: ApplicationRef,

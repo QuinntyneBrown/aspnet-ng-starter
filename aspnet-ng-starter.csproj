@@ -258,6 +258,10 @@
     <Content Include="ClientApp\app\home\home-page.component.css">
       <DependentUpon>home-page.component.html</DependentUpon>
     </Content>
+    <Content Include="ClientApp\app\shared\components\backdrop.component.css">
+      <DependentUpon>backdrop.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\shared\components\backdrop.component.html" />
     <Content Include="ClientApp\app\shared\components\header.component.css">
       <DependentUpon>header.component.html</DependentUpon>
     </Content>
@@ -265,6 +269,10 @@
     <Content Include="ClientApp\app\shared\components\left-nav.component.css">
       <DependentUpon>left-nav.component.html</DependentUpon>
     </Content>
+    <Content Include="ClientApp\app\shared\components\modal-window.component.css">
+      <DependentUpon>modal-window.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\shared\components\modal-window.component.html" />
     <Content Include="ClientApp\app\shared\components\pager.component.css">
       <DependentUpon>pager.component.html</DependentUpon>
     </Content>
@@ -384,12 +392,18 @@
       <DependentUpon>home-page.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\components\backdrop.component.ts">
+      <DependentUpon>backdrop.component.html</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\shared\components\header.component.ts">
       <DependentUpon>header.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\shared\components\index.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\components\left-nav.component.ts">
       <DependentUpon>left-nav.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\shared\components\modal-window.component.ts">
+      <DependentUpon>modal-window.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\shared\components\pager.component.ts">
       <DependentUpon>pager.component.html</DependentUpon>
@@ -414,11 +428,13 @@
     <TypeScriptCompile Include="ClientApp\app\shared\interceptors\tenant.interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\guards\auth-guard.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\authentication.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\services\content-ref.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\correlation-ids-list.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\error.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\index.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\login-redirect.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\event-hub.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\services\modal.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\popover.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\position.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\rectangle.ts" />
