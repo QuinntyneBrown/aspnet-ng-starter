@@ -22,15 +22,17 @@ export class PopoverService implements IPopoverService {
         const containerElement = document.querySelector('body');
         this._componentFactory = this._componentFactoryResolver.resolveComponentFactory(options.component);
         this._componentRef = this._componentFactory.create(this._injector);
-        this.setInitialCss();
+        this._applicationRef.attachView(this._componentRef.hostView);
 
+        this.setInitialCss();
+        
         await this._position.bottom({
-            componentRef: this._componentRef,
+            component: this._componentRef.location.nativeElement,
             target: options.target,
             space: 0
         });
         
-        this._applicationRef.attachView(this._componentRef.hostView);
+        
         containerElement.appendChild(this.nativeElement);
         setTimeout(() => { this.nativeElement.style.opacity = "100"; }, 100);        
     }

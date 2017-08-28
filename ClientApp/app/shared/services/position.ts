@@ -1,4 +1,4 @@
-﻿import { Injectable, ComponentRef } from "@angular/core";
+﻿import { Injectable } from "@angular/core";
 import { Space } from "./space";
 import { Rectangle } from "./rectangle";
 import { Ruler } from "./ruler";
@@ -38,13 +38,13 @@ export class Position {
         });
     }
 
-    public bottom(options: { componentRef: ComponentRef<any>, target: HTMLElement, space: number}): Promise<any> {
+    public bottom(options: { component: HTMLElement, target: HTMLElement, space: number}): Promise<any> {
         return new Promise(resolve => {
-            Promise.all([this._ruler.measure(options.target), this._ruler.measureComponent({ componentRef: options.componentRef })])
+            Promise.all([this._ruler.measure(options.target), this._ruler.measure(options.component)])
                 .then((resultsArray: Array<Rectangle>) => {                    
-                    var targetRectangle = resultsArray[0];
-                    var componentRectangle = resultsArray[1];
-                    translateXY(options.componentRef.location.nativeElement, targetRectangle.centerX - componentRectangle.radiusX, targetRectangle.bottom + options.space);
+                    const targetRectangle = resultsArray[0];
+                    const componentRectangle = resultsArray[1];
+                    translateXY(options.component, targetRectangle.centerX - componentRectangle.radiusX, targetRectangle.bottom + options.space);
                     resolve();
                 });  
         });
