@@ -450,6 +450,7 @@
     <TypeScriptCompile Include="ClientApp\app\shared\services\storage.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\shared.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\utilities\add-or-update.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\utilities\create-element.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\utilities\guid.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\utilities\pluck-out.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\utilities\pluck.ts" />

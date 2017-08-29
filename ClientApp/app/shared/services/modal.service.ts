@@ -1,55 +1,30 @@
-﻿import { Component, ApplicationRef, ComponentFactory, ComponentFactoryResolver, Injector, ComponentRef, Injectable, ReflectiveInjector } from "@angular/core";
-import { BackdropComponent } from "../components/backdrop.component";
-import { ModalWindowComponent } from "../components/modal-window.component";
-import { ContentRef } from "./content-ref";
+﻿import { Injectable } from "@angular/core";
+import { createElement } from "../utilities/create-element";
 
 @Injectable()
 export class ModalService {
-    constructor(
-        private _applicationRef: ApplicationRef,
-        private _componentFactoryResolver: ComponentFactoryResolver,
-        private _injector: Injector
-    ) {
-        this._backdropComponentFactoryResolver = _componentFactoryResolver.resolveComponentFactory(BackdropComponent);
-        this._modalWindowComponentFactoryResolver = _componentFactoryResolver.resolveComponentFactory(ModalWindowComponent);
+
+    public static get instance() {
+        this._instance = this._instance || new ModalService();
+        return this._instance;
     }
 
-    private _backdropComponentFactoryResolver: ComponentFactory<BackdropComponent>;
-    private _modalWindowComponentFactoryResolver: ComponentFactory<ModalWindowComponent>;
-    private _backdropComponentRef: ComponentRef<BackdropComponent>;
-    private _windowComponentRef: ComponentRef<ModalWindowComponent>;
+    private static _instance: ModalService;
+    
+    private _backdropNativeElement: HTMLElement;
 
-    public open(options: { content:any, injector:Injector }) {
+    private _modalNativeElement: HTMLElement;
+
+    public open(options: { html: any }) {
         const containerElement = document.querySelector('body');
-        const injector = options.injector || this._injector;
-
-        this._backdropComponentRef = this._backdropComponentFactoryResolver.create(injector);
-        this._applicationRef.attachView(this._backdropComponentRef.hostView);
-        containerElement.appendChild(this._backdropComponentRef.location.nativeElement);
-
-        var contentRef = this._getContentRef(this._componentFactoryResolver, injector, options.content, null);
-
-        this._windowComponentRef = this._modalWindowComponentFactoryResolver.create(injector, contentRef.nodes);
-        this._applicationRef.attachView(this._windowComponentRef.hostView);
-        containerElement.appendChild(this._windowComponentRef.location.nativeElement);
-
-    }
-
-    private _getContentRef(
-        componentFactoryResolver: ComponentFactoryResolver,
-        contentInjector: Injector,
-        content: any,
-        activeModal: any
-    ): ContentRef {
-        const componentFactory = this._componentFactoryResolver.resolveComponentFactory(content);
-        const componentRef = componentFactory.create(contentInjector);        
-        return new ContentRef([[componentRef.location.nativeElement]]);
+        this._backdropNativeElement = createElement({ html: "<ce-backdrop></ce-backdrop>" });
+        containerElement.appendChild(this._backdropNativeElement);
+        this._modalNativeElement = createElement({ html: options.html });
+        containerElement.appendChild(this._modalNativeElement);
     }
 
     public close() {
-        this._applicationRef.detachView(this._windowComponentRef.hostView);
-        this._applicationRef.detachView(this._backdropComponentRef.hostView);
-        this._windowComponentRef.destroy();
-        this._backdropComponentRef.destroy();        
+        this._backdropNativeElement.parentNode.removeChild(this._backdropNativeElement);
+        this._modalNativeElement.parentNode.removeChild(this._modalNativeElement);
     }
 }
