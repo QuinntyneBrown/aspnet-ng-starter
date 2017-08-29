@@ -33,13 +33,15 @@ namespace AspNetNgStarter
             var response = httpClient.GetAsync("http://identity.quinntynebrown.com/api/symetrickeys/get").Result;
             var jObject = response.Content.ReadAsAsync<JObject>().Result;
 
+            app.UseCors(CorsOptions.AllowAll);
+
             app.MapSignalR();
 
             app.Use(typeof(StatusMiddleware));
 
             config.Filters.Add(new HandleErrorAttribute(container.Resolve<ILoggerFactory>()));
 
-            app.UseCors(CorsOptions.AllowAll);
+            
             
             config.SuppressHostPrincipal();
 
